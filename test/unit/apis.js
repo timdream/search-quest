@@ -8,7 +8,7 @@ test('Google should return search suggestions', function () {
   API.getSuggestions('google', 'Hello', function (result) {
     ok(Array.isArray(result), 'result is an array.');
 
-    ok(true, 'results: ' + result.join(','));
+    ok(true, 'results: ' + (result || []).join(','));
     start();
   });
 });
@@ -19,7 +19,18 @@ test('Yahoo should return search suggestions', function () {
   API.getSuggestions('yahoo', 'Hello', function (result) {
     ok(Array.isArray(result), 'result is an array.');
 
-    ok(true, 'results: ' + result.join(','));
+    ok(true, 'results: ' + (result || []).join(','));
+    start();
+  });
+});
+
+test('Bing should return search suggestions', function () {
+  stop();
+
+  API.getSuggestions('bing', 'Hello', function (result) {
+    ok(Array.isArray(result), 'result is an array.');
+
+    ok(true, 'results: ' + (result || []).join(','));
     start();
   });
 });
@@ -30,7 +41,7 @@ test('Google should return search Chinese suggestions', function () {
   API.getSuggestions('google', '康熙', function (result) {
     ok(Array.isArray(result), 'result is an array.');
 
-    ok(true, 'results: ' + result.join(','));
+    ok(true, 'results: ' + (result || []).join(','));
     start();
   });
 });
@@ -41,7 +52,18 @@ test('Yahoo should return search Chinese suggestions', function () {
   API.getSuggestions('yahoo', '康熙', function (result) {
     ok(Array.isArray(result), 'result is an array.');
 
-    ok(true, 'results: ' + result.join(','));
+    ok(true, 'results: ' + (result || []).join(','));
+    start();
+  });
+});
+
+test('Bing should return search Chinese suggestions', function () {
+  stop();
+
+  API.getSuggestions('bing', '康熙', function (result) {
+    ok(Array.isArray(result), 'result is an array.');
+
+    ok(true, 'results: ' + (result || []).join(','));
     start();
   });
 });
