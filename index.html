@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
   <script>
     var _gaq= _gaq || [];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
@@ -15,13 +16,52 @@
   <script defer type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script defer type="text/javascript" src="./assets/config.js"></script>
   <script defer type="text/javascript" src="./assets/script.js"></script>
+  <script defer type="text/javascript" src="./assets/ui.js"></script>
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js" defer></script>
 </head>
 <body>
+  <div id="header" class="navbar navbar-inverse" hidden>
+    <div class="navbar-inner">
+      <div class="container-fluid">
+        <a class="label label-info" href="#">Search Quest!</a>
+        <div class="nav-collapse collapse">
+          <p class="navbar-text pull-right">
+            <span class="icon icon-legal"></span>
+            <span>Matched: </span><span class="badge badge-success">0</span>
+            Logged in as <a href="#" class="navbar-link">Username</a>
+          </p>
+          <ul class="nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+  </div>
   <div class="container">
-    <div class="hero-unit">
+    <div class="hero-unit" id="hero-unit">
       <h1>Search Quest</h1>
-      <button class="btn btn-primary">Game Start</button>
+      <p class="pull-right">
+        <button class="btn btn-primary" id="1p-start">1P Game Start</button>
+        <button class="btn" id="2p-start">2P Game Start</button>
+      </p>
+    </div>
+  </div>
+  <div id="ui" class="container-fluid" hidden>
+    <div class="row-fluid">
+      <div class="span3">
+        <!--Sidebar content-->
+        <div class="well sidebar-nav">
+          <form class="form-search">
+            <input type="text" class="input-medium search-query">
+            <button type="submit" class="btn">Search</button>
+          </form>
+        </div>
+      </div>
+      <div class="span9">
+        <!--Body content-->
+      </div>
     </div>
   </div>
 </body>
