@@ -93,3 +93,27 @@ test('Function should return Chinese search result text', function () {
     start();
   });
 });
+
+module('API.getQuiz()');
+
+test('Function should return quiz list', function () {
+  stop();
+
+  API.getQuiz('bbs', function (result) {
+    ok(Array.isArray(result), 'result is an array.');
+
+    ok(true, 'results: ' + (result || []).join(','));
+    start();
+  });
+});
+
+test('Function should return a default quiz list', function () {
+  stop();
+
+  API.getQuiz('', function (result) {
+    ok(Array.isArray(result), 'result is an array.');
+
+    ok(true, 'results: ' + (result || []).join(','));
+    start();
+  });
+});
