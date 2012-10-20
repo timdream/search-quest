@@ -15,6 +15,8 @@ if (!ctype_alnum($type)) {
 if (!file_exists('./inc/quiz/' . $type . '.txt'))
   errorhandler('type not exist!');
 
-$quiz = array_rand(file('./inc/quiz/' . $type . '.txt'), 36);
+$pool = file('./inc/quiz/' . $type . '.txt');
+shuffle($pool);
+$quiz = array_slice($pool, 0, 36);
 
 print json_encode(array('quiz' => $quiz));
