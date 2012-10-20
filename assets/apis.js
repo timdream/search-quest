@@ -75,7 +75,7 @@ API.getSuggestions = function (source, term, callback) {
 };
 
 API.getYSearchText = function (query, callback) {
-  $.getJSON(API.apiUrl + 'yProxy.php?q=' + encodeURIComponent(query), function (data) {
+  $.getJSON('http://grassboy.tw/yProxy.php?q=' + encodeURIComponent(query), function (data) {
     if (!data || !data.html) {
       callback();
       return;
