@@ -6,6 +6,8 @@ var API = API || {};
 
 (function ($) {
 
+API.apiUrl = API.apiUrl || './api/';
+
 API.getSuggestions = function (source, term, callback) {
   term = $.trim(term).toLowerCase();
   switch (source.toLowerCase()) {
@@ -37,7 +39,7 @@ API.getSuggestions = function (source, term, callback) {
           // flatten Google result
           var result = [];
           data[1].forEach(function (item) {
-            result.push(item[0].replace(/<\/?b>/g, ''));
+            result.push(item[0].replace(/<[^>]+>/g, ''));
           });
 
           callback(result);
@@ -70,6 +72,43 @@ API.getSuggestions = function (source, term, callback) {
       );
       break;
   }
+};
+
+API.getYSearchText = function (query, callback) {
+  $.getJSON('http://grassboy.tw/yProxy.php?q=' + encodeURIComponent(query) +
+      '&callback=?',
+    function (data) {
+      if (!data || !data.html) {
+        callback();
+        return;
+      }
+
+      var html = data.html;
+
+      // strip script, from jQuery
+      var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+      html = html.replace(rscript, '');
+
+      // Use load() instead of html() to remove <script>
+      var $div = $('<div />').html(html);
+      callback($div.find('#results ol > li > div > div').text());
+
+    }
+  );
+};
+
+API.getQuiz = function (type, callback) {
+  $.getJSON(
+    API.apiUrl + 'getQuiz.php?type=' + encodeURIComponent(type),
+    function (data) {
+      if (!data || !data.quiz) {
+        callback();
+        return;
+      }
+
+      callback(data.quiz);
+    }
+  );
 };
 
 })(jQuery);

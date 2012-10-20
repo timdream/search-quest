@@ -4,6 +4,27 @@
   <meta charset=UTF-8>
   <title>Get Suggestions</title>
 </head>
+<style>
+#result {
+  background: #fcc;
+  width: 400px;
+  height: 400px;
+  margin: 0;
+  padding: 0;
+}
+
+#result li {
+  list-style: none;
+  display: block;
+  float: left;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px;
+  background: #ccf;
+  height: 1em;
+}
+</style>
 <body>
   <form id="form" action="#" method="get">
     <input id="input" type="text">
@@ -19,15 +40,16 @@ jQuery(function ($) {
   $form.on('submit', function (ev) {
     ev.preventDefault();
     var suggestions = [];
-    var term = $input.val();
+    var inputTerm = $input.val();
 
     (['google', 'yahoo', 'bing']).forEach(function (engine) {
-      API.getSuggestions(engine, term, function (result) {
+      API.getSuggestions(engine, inputTerm, function (result) {
         if (!result)
           return;
 
         result.forEach(function (term) {
-          if (suggestions.indexOf(term) == -1) {
+          term = term.substr(inputTerm.length);
+          if (suggestions.indexOf(term) == -1 && !!term) {
             suggestions.push(term);
           }
         });
