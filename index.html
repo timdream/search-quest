@@ -4,9 +4,9 @@
   <meta charset=UTF-8>
   <title>Search Quest</title>
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
-  <!--link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-responsive.min.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet" -->
+  <link href="http://netdna.bootstrapcdn.com/font-awesome/2.0/css/font-awesome.css" rel="stylesheet">
   <script>
     var _gaq= _gaq || [];
     (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
@@ -18,15 +18,44 @@
   <script defer type="text/javascript" src="./assets/apis.js"></script>
   <script defer type="text/javascript" src="./assets/script.js"></script>
   <script defer type="text/javascript" src="./assets/ui.js"></script>
-  <!--script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js" defer></script-->
+  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js" defer></script>
 </head>
 <body>
-  <div id="start">
-    <h1>Search Quest</h1>
-    <button id="1p-start">1P Game</button>
-    <button id="2p-start">2P Game</button>
-  </div>
-  <div id="main-game" hidden>
+  <div id="start" class="container">
+    <div class="hero-unit">
+      <h1>Search Quest</h1>
+    </div>
+      <ul id="main-menu" class="nav nav-list">
+        <li class="active" data-index=0>
+          <a href="#"># of Player
+            <span id="player-number-label" class="label pull-right">1P</span>
+          </a>
+          <select id="player-number" style="display:none;">
+            <option value="1P">1P</option>
+            <option value="2P">2P</option>
+          </select>
+        </li>
+        <li data-index=1>
+          <a href="#">Quest catogery
+            <span id="quest-cate-label" class="label pull-right">鄉民</span>
+          </a>
+          <select id="quest-cate" style="display: none;">
+            <option value="鄉民">鄉民</option>
+            <option value="流行">流行</option>
+          </select>
+        </li>
+        <li data-index=2>
+          <a href="#">Default Search Engine
+            <span class="label pull-right">Yahoo</span>
+          </a>
+        </li>
+        <li data-index=3>
+          <a href="#">Start Game</a>
+        </li>
+        <li data-index=4>
+          <a href="#">About tag</a>
+        </li>
+      </ul>
   </div>
 </body>
 </html>
