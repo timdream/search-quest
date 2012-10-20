@@ -51,31 +51,18 @@ var Map = {
     }
   },
 
-  match: function map_match(keyword, player) {
-    var self = this;
-    var bomb = this.createBomb(keyword);
-    setTimeout(function() {
-      var matched = self.fire(self._checkin(keyword), player, bomb);
-      bomb.bind('animationend webkitAnimationEnd oanimationend', function() {
-        bomb.remove();
-      });
-      if (matched) bomb.hide().remove();
-      else bomb.removeClass('moving').addClass('deleting');
-
-    }, 3000);
-  },
-
   createBomb: function map_createBomb(keyword) {
     $('<span class="label label-info moving">'+keyword+'</span>').appendTo($('#bombArea'));
     return $('#bombArea span.moving:last');
   },
 
-  fire: function map_fire(mapping, player, bomb) {
+  fire: function map_fire(mapping, player, bomb, keyword) {
     var matched = false;
     for (var i = 0; i < mapping.length; i++) {
       if (this._keywords.indexOf(mapping[i])) {
         matched = true;
         var target = $('#map div.placeholder').eq(this._keywords.indexOf(mapping[i]));
+        target.addClass('active');
         var clone = bomb.clone();
         clone.css({top: bomb.offset().top, left: bomb.offset().left}).appendTo($('#bombArea')).removeClass('moving').addClass('flying').css({top: target.offset().top, left: target.offset().left});
       }
@@ -83,14 +70,26 @@ var Map = {
     return matched;
   },
 
-  _checkin: function map_checkin(keyword) {
-    this._currentKeyword = keyword;
-    var mapping = [];
-    for (var i = 0; i < this.options.width*this.options.height; i++) {
-      if (Math.random() < 0.02)
-        mapping.push(this._keywords[i]);
-    }
-
-    return mapping;
+  match: function map_match(keyword, player) {
+    var self = this;
+    API.getYSearchText(keyword, function onSearchReturn(data) {
+      console.log(data);
+      var mapping = [];
+      for (var i = 0; i < 6*6; i++) {
+        if (data.indexOf(self._keywords[i]) >= 0 && keyword != self._keywords[i] && !$('#map div.placeholder').eq(i).hasClass('active')) {
+          // success
+          mapping.push(self._keywords[i]);
+        } else {
+          // fail
+        }
+      }
+      var bomb = self.createBomb(keyword);
+      var matched = self.fire(mapping, player, bomb);
+      bomb.bind('animationend webkitAnimationEnd oanimationend', function() {
+        bomb.remove();
+      });
+      if (mapping.length) bomb.hide().remove();
+      else bomb.removeClass('moving').addClass('deleting');
+    });
   }
 };
