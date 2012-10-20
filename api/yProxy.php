@@ -5,8 +5,8 @@ require('./inc/inc.php');
 define("POST", true);
 define("GET", false);
 
-function fopen_url($url, $cookies, $config=array()) {
-  if (!isset($cookies))
+function fopen_url($url, $cookies='', $config=array()) {
+  if ($cookies = '')
     $cookies = 'BX=3wety6xb1Dlrb2&b=4&s=a1; lang=zh-tw';
 
   return curl_send('GET', $url, array(), $cookies, $config);
