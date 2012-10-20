@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset=UTF-8>
+  <title>Get Suggestions</title>
+</head>
+<body>
+  <form id="form" action="#" method="get">
+    <input id="input" type="text">
+  </form>
+  <ul id="result"></ul>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="../assets/apis.js"></script>
+<script>
+jQuery(function ($) {
+  var $form = $('#form');
+  var $input = $('#input');
+
+  $form.on('submit', function (ev) {
+    ev.preventDefault();
+    var suggestions = [];
+    var term = $input.val();
+
+    (['google', 'yahoo', 'bing']).forEach(function (engine) {
+      API.getSuggestions(engine, term, function (result) {
+        if (!result)
+          return;
+
+        result.forEach(function (term) {
+          if (suggestions.indexOf(term) == -1) {
+            suggestions.push(term);
+          }
+        });
+
+        showSuggestions(suggestions);
+      });
+    });
+  });
+
+  var $result = $('#result');
+
+  function showSuggestions(suggestions) {
+    $result.empty();
+    suggestions.forEach(function (term) {
+      $result.append($('<li/>').text(term));
+    });
+  }
+
+});
+
+</script>
+</body>
+</html>
