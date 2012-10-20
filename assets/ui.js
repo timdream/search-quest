@@ -7,9 +7,8 @@ var SearchQuest = {
 
   registerEvents: function sq_registerEvents() {
     $('#1p-start,#2p-start').click(function vspc(){
-      $('#hero-unit').slideUp();
-      $('#ui').fadeIn();
-      $('#header').slideDown();
+      $('#start').slideUp();
+      $('#main-ui').slideDown();
     });
   }
 };
