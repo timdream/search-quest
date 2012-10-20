@@ -37,7 +37,7 @@ API.getSuggestions = function (source, term, callback) {
           // flatten Google result
           var result = [];
           data[1].forEach(function (item) {
-            result.push(item[0].replace(/<\/?b>/g, ''));
+            result.push(item[0].replace(/<[^>]+>/g, ''));
           });
 
           callback(result);
