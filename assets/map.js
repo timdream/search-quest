@@ -55,7 +55,13 @@ var Map = {
     var self = this;
     var bomb = this.createBomb(keyword);
     setTimeout(function() {
-      self.fire(self._checkin(keyword), player, bomb);
+      var matched = self.fire(self._checkin(keyword), player, bomb);
+      bomb.bind('animationend webkitAnimationEnd oanimationend', function() {
+        bomb.remove();
+      });
+      if (matched) bomb.hide().remove();
+      else bomb.removeClass('moving').addClass('deleting');
+
     }, 3000);
   },
 
@@ -65,21 +71,23 @@ var Map = {
   },
 
   fire: function map_fire(mapping, player, bomb) {
+    var matched = false;
     for (var i = 0; i < mapping.length; i++) {
       if (this._keywords.indexOf(mapping[i])) {
+        matched = true;
         var target = $('#map div.placeholder').eq(this._keywords.indexOf(mapping[i]));
         var clone = bomb.clone();
         clone.css({top: bomb.offset().top, left: bomb.offset().left}).appendTo($('#bombArea')).removeClass('moving').addClass('flying').css({top: target.offset().top, left: target.offset().left});
       }
     }
-    bomb.hide().remove();
+    return matched;
   },
 
   _checkin: function map_checkin(keyword) {
     this._currentKeyword = keyword;
     var mapping = [];
     for (var i = 0; i < this.options.width*this.options.height; i++) {
-      if (Math.random() < 0.05)
+      if (Math.random() < 0.02)
         mapping.push(this._keywords[i]);
     }
 

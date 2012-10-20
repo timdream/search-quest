@@ -34,11 +34,8 @@ div.placeholder.active {
   color: white;
 }
 
-div.placeholder .label {
-  width: auto;
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
+.label {
+  display: inline-block;
 }
 
 .moving {
@@ -69,21 +66,38 @@ div.placeholder .label {
   -moz-transition: left 2s ease-out, top 2s ease-out;
   transition: left 2s ease-out, top 2s ease-out;
 }
+
 @-webkit-keyframes cssanimation {
   from { top: 0; }
-  to { top: 5px; }
+  to { top: 10px; }
 }
+
 @-moz-keyframes cssanimation {
-  from { margin-left: 0; }
-  to { margin-left: 100%; }
+  from { top: 0; }
+  to { top: 10px; }
 }
-@-o-keyframes cssanimation {
-  from { margin-left: 0; }
-  to { margin-left: 100%; }
+
+.deleting {
+  position: relative;
+  -webkit-animation-name: spin1;
+  -webkit-animation-duration: 2s;
+
+  -moz-animation-name: spin1;
+  -moz-animation-duration: 2s;
 }
-@keyframes cssanimation {
-  from { margin-left: 0; }
-  to { margin-left: 100%; }
+
+@-webkit-keyframes spin1 {
+  from { top: 0; -webkit-transform: rotate(0deg); opacity: 1; }
+  50% { top: -200px;}
+  80% {opacity: 0.5;}
+  to {top: 0; -webkit-transform: rotate(3600deg); opacity: 0; }
+}
+
+@-moz-keyframes spin1 {
+  from { top: 0; -moz-transform: rotate(0deg); opacity: 1;}
+  50% { top: -200px;}
+  80% {opacity: 0.5;}
+  to {top: 0; -moz-transform: rotate(3600deg); opacity: 0;}
 }
 
 div.bombArea {
