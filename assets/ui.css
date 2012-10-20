@@ -1,3 +1,23 @@
+#search,#keyword,span.label {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+span.label, span.label a {
+  display: inline-block;
+  height: 18px;
+  line-height: 18px;
+}
+
+span.label a {
+  text-decoration: none;
+  color: white;
+}
+
+#bombArea {
+  margin-top: 400px;
+}
+
 div.placeholder {
   border: solid 1px black;
   -moz-box-sizing: border-box;
@@ -60,11 +80,14 @@ div.placeholder.active {
   animation-direction: alternate;
   animation-iteration-count: infinite;
 }
-.flying {
+.label.flying {
   position: absolute;
-  -webkit-transition: left 2s ease-out, top 2s ease-out;
-  -moz-transition: left 2s ease-out, top 2s ease-out;
-  transition: left 2s ease-out, top 2s ease-out;
+  display: block;
+  -webkit-transition: background-color .5s ease-out, -webkit-transform .5s ease-out;
+  -moz-transition: background-color .5s ease-out, -moz-transform .5s ease-out;
+  -moz-transform: rotateX(1800deg);
+  -webkit-transform: rotateX(1800deg);
+  background-color: #468847;
 }
 
 @-webkit-keyframes cssanimation {
@@ -90,16 +113,16 @@ div.placeholder.active {
   from { top: 0; -webkit-transform: rotate(0deg); opacity: 1; }
   50% { top: -200px;}
   80% {opacity: 0.5;}
-  to {top: 0; -webkit-transform: rotate(3600deg); opacity: 0; }
+  to {top: 0; -webkit-transform: rotate(3600deg); opacity: 0; background-color: #B94A48;}
 }
 
 @-moz-keyframes spin1 {
   from { top: 0; -moz-transform: rotate(0deg); opacity: 1;}
   50% { top: -200px;}
   80% {opacity: 0.5;}
-  to {top: 0; -moz-transform: rotate(3600deg); opacity: 0;}
+  to {top: 0; -moz-transform: rotate(3600deg); opacity: 0; background-color: #B94A48;}
 }
 
-div.bombArea {
-  height: 50px;
+div#bombArea {
+  height: 24px;
 }
