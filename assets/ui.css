@@ -81,6 +81,17 @@ div.placeholder.active div.craft {
   text-shadow: 0 -1px 0px black;
 }
 
+div.placeholder.active.firefox {
+  background-image: -webkit-radial-gradient(right bottom, yellow ,orange 100%);
+  background-image: -moz-radial-gradient(right bottom, yellow ,orange 100%);
+  box-shadow: 0px 0px 15px orange inset;
+}
+
+div.placeholder.active.firefox div.craft {
+  color: white;
+  text-shadow: 0 -1px 0px red;
+}
+
 .label {
   display: inline-block;
 }

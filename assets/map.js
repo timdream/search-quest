@@ -16,6 +16,8 @@ var Map = {
     return keywords;
   },
 
+  _lineLength: 5,
+
   _defaultOptions: {
     width: 5,
     height: 5,
@@ -63,6 +65,7 @@ var Map = {
         matched = true;
         var target = $('#map div.placeholder').eq(this._keywords.indexOf(mapping[i]));
         target.addClass('active');
+        self.checkBingo(i);
         var clone = bomb.clone();
         var x = target.offset().left - bomb.parent().offset().left;
         var y = target.offset().top - bomb.parent().offset().top;
@@ -100,5 +103,87 @@ var Map = {
         bomb.removeClass('moving').addClass('deleting');
       }
     });
+  },
+
+  checkBingo: function map_checkBingo(root) {
+    var x = root % this.options.width;
+    var y = (root - x)/ this.options.height;
+    var line = 0;
+    var array = [];
+    for (var i = 0; i < this.options.width; i++) {
+      var target = $('#map div.placeholder').eq(y * this.options.width + i);
+      if (target.hasClass('active'))
+        array.push(target);
+      }
+    }
+
+    if (array.length == this._lineLength) {
+      // new line!
+      // scoreBox.fitLine();
+      line ++;
+      for (var i = 0; i < array.length; i++) {
+        array[i].addClass('firefox');
+      }
+    }
+
+    array = [];
+
+    for (var j = 0; j < this.options.height; j++) {
+      var target = $('#map div.placeholder').eq(j * this.options.height + x);
+      if (target.hasClass('active')) {
+        array.push(target);
+      }
+    }
+
+    if (array.length == this._lineLength) {
+      // new line!
+      // scoreBox.fitLine();
+      line++;
+      for (var i = 0; i < array.length; i++) {
+        array[i].addClass('firefox');
+      }
+    }
+
+    array = [];
+
+    //  /
+    if (x + y == this._lineLength - 1) {
+      for (var i = 0; i < this.options.width; i++) {
+        var target = $('#map div.placeholder').eq(i* (this.options.width - 1));
+        if (target.hasClass('active')) {
+          array.push(target);
+        }
+      }
+    }
+
+    if (array.length == this._lineLength) {
+      line++;
+      for (var i = 0; i < array.length; i++) {
+        array[i].addClass('firefox');
+      }
+    }
+
+    array = [];
+
+    if (x == y) {
+      for (var i = 0; i < this.options.width; i++) {
+        var target = $('#map div.placeholder').eq(i * this.options.width + i);
+        if (target.hasClass('active')) {
+          array.push(target);
+        }
+      }
+    }
+
+    if (array.length == this._lineLength){
+      line++;
+      for (var i = 0; i < array.length; i++) {
+        array[i].addClass('firefox');
+      }
+    }
+
+    if (line) {
+      scoreBox.fitLine(line);
+    }
+    // \
   }
 };
