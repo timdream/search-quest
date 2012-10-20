@@ -8,9 +8,11 @@ var Map = {
 
   _units: [],
 
+  _debugMode: true,
+
   getKeywords: function map_getKeywords(){
     var keywords = [
-      '討厭', '說話', '迪奇', '魔王', 'Peter', '不得不', '主要', '凱薩琳', '士兵', '大戰', '對抗', '房子', '擔心', '敘述', '是電影', '殘酷', '環島', '痞子英雄', '等待', '經過', '背後', '菲利浦', '諷刺', '豆導', '趙薇', '43m', 'MIB', '上尉', '分享', '刻意', '子女', '帥氣', '日人', '明明', '春梅', '比利', '獵人', '看來', '荒謬', '野獸', '開戰時刻', '阿樹', '阿賢', '離婚', '首相', '麥克', '黃四郎', '黑天鵝', '一片', '也因', '他也', '受傷', '多麼', '大陸', '女樹', '孤獨', '帶來', '搭配', '是人', '梅蘭芳', '死法', '狀況', '猩球崛起'
+      'PTT', '說話', '迪奇', '魔王', 'Peter', '不得不', '主要', '凱薩琳', '士兵', '大戰', '對抗', '房子', '擔心', '敘述', '是電影', '殘酷', '環島', '痞子英雄', '正義', '經過', '背後', '菲利浦', '諷刺', '豆導', '趙薇', '43m', 'MIB', '上尉', '分享', '刻意', '子女', '帥氣', '日人', '明明', '春梅', '比利', '獵人', '看來', '荒謬', '野獸', '開戰時刻', '阿樹', '阿賢', '離婚', '首相', '麥克', '黃四郎', '黑天鵝', '一片', '也因', '他也', '受傷', '多麼', '大陸', '女樹', '孤獨', '帶來', '搭配', '是人', '梅蘭芳', '死法', '狀況', '猩球崛起'
     ];
 
     return keywords;
@@ -29,6 +31,7 @@ var Map = {
     if (this._inited)
       return;
     $('#keyword').val('').focus();
+    window.scoreBox = new ScoreBox($("#scorebox"));
 
     this.options = this._defaultOptions;
     this._keywords = this.getKeywords();
@@ -61,11 +64,11 @@ var Map = {
   fire: function map_fire(mapping, player, bomb, keyword) {
     var matched = false;
     for (var i = 0; i < mapping.length; i++) {
-      if (this._keywords.indexOf(mapping[i])) {
+      var index = mapping[i];
         matched = true;
-        var target = $('#map div.placeholder').eq(this._keywords.indexOf(mapping[i]));
+        var target = $('#map div.placeholder').eq(index);
         target.addClass('active');
-        self.checkBingo(i);
+        this.checkBingo(index);
         var clone = bomb.clone();
         var x = target.offset().left - bomb.parent().offset().left;
         var y = target.offset().top - bomb.parent().offset().top;
@@ -74,10 +77,8 @@ var Map = {
           return function(){
             clone.css({'-moz-transform': 'translate('+x+'px,'+y+'px) rotate(1800deg)', '-webkit-transform': 'translate('+x+'px,'+y+'px) rotate(1800deg)'});
           }})(clone, x, y),10);
-      }
     }
-    if (matched) bomb.remove();
-    return matched;
+    bomb.remove();
   },
 
   match: function map_match(keyword, player) {
@@ -86,17 +87,20 @@ var Map = {
       console.log(data);
       var mapping = [];
       for (var i = 0; i < self.options.width * self.options.height; i++) {
-        if (data.indexOf(self._keywords[i]) >= 0 && keyword.indexOf(self._keywords[i]) < 0 && !$('#map div.placeholder').eq(i).hasClass('active')) {
-          // success
-          mapping.push(self._keywords[i]);
+        var index = keyword.indexOf(self._keywords[i]);
+        if (data.indexOf(self._keywords[i]) >= 0 && keyword.indexOf(self._keywords[i]) < 0 &&
+             !$('#map div.placeholder').eq(i).hasClass('active')) {
+          scoreBox.success();
+          mapping.push(i);
         } else {
           // fail
         }
       }
       var bomb = self.createBomb(keyword);
-      var matched = self.fire(mapping, player, bomb);
-      if (mapping.length) bomb.hide().remove();
-      else {
+      if (mapping.length) {
+        self.fire(mapping, player, bomb);
+      } else {
+        scoreBox.fail();
         bomb.bind('webkitAnimationEnd animationend', function () {
           bomb.remove();
         });
@@ -112,7 +116,7 @@ var Map = {
     var array = [];
     for (var i = 0; i < this.options.width; i++) {
       var target = $('#map div.placeholder').eq(y * this.options.width + i);
-      if (target.hasClass('active'))
+      if (target.hasClass('active')) {
         array.push(target);
       }
     }
@@ -149,7 +153,7 @@ var Map = {
     //  /
     if (x + y == this._lineLength - 1) {
       for (var i = 0; i < this.options.width; i++) {
-        var target = $('#map div.placeholder').eq(i* (this.options.width - 1));
+        var target = $('#map div.placeholder').eq((i+1)*(this.options.width - 1));
         if (target.hasClass('active')) {
           array.push(target);
         }

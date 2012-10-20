@@ -1,5 +1,5 @@
 (function(){
-  var ScoreBox = function(targetElement){
+  window.ScoreBox = function(targetElement){
     this.targetElement = targetElement;
     this.combo = 0;
     this.initUI();
@@ -95,5 +95,4 @@
       });
     }
   }
-  //window.scoreBox = new ScoreBox($("#scorebox"));
 })();
