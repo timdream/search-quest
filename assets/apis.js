@@ -6,6 +6,8 @@ var API = API || {};
 
 (function ($) {
 
+API.apiUrl = API.apiUrl || './api/';
+
 API.getSuggestions = function (source, term, callback) {
   term = $.trim(term).toLowerCase();
   switch (source.toLowerCase()) {
@@ -73,7 +75,7 @@ API.getSuggestions = function (source, term, callback) {
 };
 
 API.getYSearchText = function (query, callback) {
-  $.getJSON('./api/yProxy.php?q=' + encodeURIComponent(query), function (data) {
+  $.getJSON(API.apiUrl + 'yProxy.php?q=' + encodeURIComponent(query), function (data) {
     if (!data || !data.html) {
       callback();
       return;

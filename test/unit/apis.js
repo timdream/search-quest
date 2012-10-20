@@ -1,5 +1,7 @@
 'use strict';
 
+API.apiUrl = '../api/';
+
 module('API.getSuggestions()');
 
 test('Google should return search suggestions', function () {
