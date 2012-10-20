@@ -17,8 +17,8 @@ var Map = {
   },
 
   _defaultOptions: {
-    width: 6,
-    height: 6,
+    width: 5,
+    height: 5,
     'player-number': '1P',
     'quest-cate': ''
   },
@@ -82,8 +82,8 @@ var Map = {
     API.getYSearchText(keyword, function onSearchReturn(data) {
       console.log(data);
       var mapping = [];
-      for (var i = 0; i < 6*6; i++) {
-        if (data.indexOf(self._keywords[i]) >= 0 && keyword.indexOf(self._keywords[i]) >= 0 && !$('#map div.placeholder').eq(i).hasClass('active')) {
+      for (var i = 0; i < self.options.width * self.options.height; i++) {
+        if (data.indexOf(self._keywords[i]) >= 0 && keyword.indexOf(self._keywords[i]) < 0 && !$('#map div.placeholder').eq(i).hasClass('active')) {
           // success
           mapping.push(self._keywords[i]);
         } else {
