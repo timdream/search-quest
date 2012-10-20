@@ -98,8 +98,8 @@ API.getYSearchText = function (query, callback) {
 };
 
 API.getQuiz = function (type, callback) {
-  $.getJSON(API.apiUrl + 'getQuiz.php?type=' + encodeURIComponent(type) +
-      '&callback=?',
+  $.getJSON(
+    API.apiUrl + 'getQuiz.php?type=' + encodeURIComponent(type),
     function (data) {
       if (!data || !data.quiz) {
         callback();
