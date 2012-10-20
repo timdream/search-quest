@@ -23,8 +23,8 @@ var SearchQuest = {
     $('#search').submit(function onSubmit(evt) {
       evt.preventDefault();
       var key = $('#keyword').val();
-      $('#keyword').val('');
       Map.match(key);
+      $('#keyword').val('');
       return false;
     });
 
@@ -137,7 +137,6 @@ var SearchQuest = {
     $('#start').slideUp();
     $('#game').slideDown();
     Map.init({});
-    $('#keyword').val('').focus();
   }
 };
 
