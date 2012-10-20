@@ -22,7 +22,7 @@ function curl_send($isPost, $url, $args=array(), $cookies="", $config = array())
   curl_setopt($curl_handler, CURLOPT_SSL_VERIFYHOST, 2);
   curl_setopt($curl_handler, CURLOPT_SSL_VERIFYPEER, false);
 
-  if ($config["USER_AGENT"]) {
+  if (isset($config["USER_AGENT"])) {
     curl_setopt($curl_handler, CURLOPT_USERAGENT,$config["USER_AGENT"]);
   }
 
@@ -52,7 +52,7 @@ function curl_send($isPost, $url, $args=array(), $cookies="", $config = array())
   $result = curl_exec($curl_handler);
   if (strpos($result, "error 999"))
     return ("Error999!!!");
-  if ($config["to_data_url"]){
+  if (isset($config["to_data_url"])){
     $filetype = curl_getinfo($curl_handler, CURLINFO_CONTENT_TYPE);
     curl_close($curl_handler);
     return sprintf("data:%s;base64,%s", $filetype, base64_encode($result));
