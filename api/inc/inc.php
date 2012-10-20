@@ -1,7 +1,5 @@
 <?php
 
-require('./inc/config.inc.php');
-
 function errorhandler($errno = null,
                       $errstr = 'Unknown Error.',
                       $errfile = null, $errline = null, $errcontext = null) {
@@ -16,6 +14,8 @@ function errorhandler($errno = null,
 
 error_reporting(E_ALL | E_STRICT);
 set_error_handler('errorhandler');
-setlocale(LC_ALL, 'en_US', 'english_us'); // U*IX, Windows
 
 header('Content-type: text/javascript; charset=utf-8');
+require('./inc/config.inc.php');
+
+setlocale(LC_ALL, 'en_US', 'english_us'); // U*IX, Windows
