@@ -17,8 +17,8 @@ var Map = {
   },
 
   _defaultOptions: {
-    width: 6,
-    height: 6,
+    width: 5,
+    height: 5,
     'player-number': '1P',
     'quest-cate': ''
   },
@@ -51,46 +51,54 @@ var Map = {
     }
   },
 
-  match: function map_match(keyword, player) {
-    var self = this;
-    var bomb = this.createBomb(keyword);
-    setTimeout(function() {
-      var matched = self.fire(self._checkin(keyword), player, bomb);
-      bomb.bind('animationend webkitAnimationEnd oanimationend', function() {
-        bomb.remove();
-      });
-      if (matched) bomb.hide().remove();
-      else bomb.removeClass('moving').addClass('deleting');
-
-    }, 3000);
-  },
-
   createBomb: function map_createBomb(keyword) {
-    $('<span class="label label-info moving">'+keyword+'</span>').appendTo($('#bombArea'));
+    $('<span class="label label-info moving"><a target="_blank" href="http://tw.search.yahoo.com/search?p='+keyword+'">'+keyword+'</a></span>').appendTo($('#bombArea'));
     return $('#bombArea span.moving:last');
   },
 
-  fire: function map_fire(mapping, player, bomb) {
+  fire: function map_fire(mapping, player, bomb, keyword) {
     var matched = false;
     for (var i = 0; i < mapping.length; i++) {
       if (this._keywords.indexOf(mapping[i])) {
         matched = true;
         var target = $('#map div.placeholder').eq(this._keywords.indexOf(mapping[i]));
+        target.addClass('active');
         var clone = bomb.clone();
-        clone.css({top: bomb.offset().top, left: bomb.offset().left}).appendTo($('#bombArea')).removeClass('moving').addClass('flying').css({top: target.offset().top, left: target.offset().left});
+        var x = target.offset().left - bomb.parent().offset().left;
+        var y = target.offset().top - bomb.parent().offset().top;
+        clone.css({'-moz-transform': 'translate(0, 0) rotate(0deg)', '-webkit-transform': 'translate(0, 0) rotate(0deg)'}).appendTo($('#bombArea')).removeClass('moving').addClass('flying');
+        setTimeout((function(clone, x, y){
+          return function(){
+            clone.css({'-moz-transform': 'translate('+x+'px,'+y+'px) rotate(1800deg)', '-webkit-transform': 'translate('+x+'px,'+y+'px) rotate(1800deg)'});
+          }})(clone, x, y),10);
       }
     }
+    if (matched) bomb.remove();
     return matched;
   },
 
-  _checkin: function map_checkin(keyword) {
-    this._currentKeyword = keyword;
-    var mapping = [];
-    for (var i = 0; i < this.options.width*this.options.height; i++) {
-      if (Math.random() < 0.02)
-        mapping.push(this._keywords[i]);
-    }
-
-    return mapping;
+  match: function map_match(keyword, player) {
+    var self = this;
+    API.getYSearchText(keyword, function onSearchReturn(data) {
+      console.log(data);
+      var mapping = [];
+      for (var i = 0; i < self.options.width * self.options.height; i++) {
+        if (data.indexOf(self._keywords[i]) >= 0 && keyword.indexOf(self._keywords[i]) < 0 && !$('#map div.placeholder').eq(i).hasClass('active')) {
+          // success
+          mapping.push(self._keywords[i]);
+        } else {
+          // fail
+        }
+      }
+      var bomb = self.createBomb(keyword);
+      var matched = self.fire(mapping, player, bomb);
+      if (mapping.length) bomb.hide().remove();
+      else {
+        bomb.bind('webkitAnimationEnd animationend', function () {
+          bomb.remove();
+        });
+        bomb.removeClass('moving').addClass('deleting');
+      }
+    });
   }
 };

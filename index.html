@@ -60,13 +60,21 @@
         </li>
       </ul>
   </div>
-  <div id="game" hidden>
-    <div id="map"></div>
-    <form id="search">
-      <input type="text" id="keyword" />
-      <button type="submit">Submit</button>
-    </form>
-    <div id="bombArea">
+  <div id="game" hidden class="container">
+    <div class="row">
+      <div class="span8">
+        <div id="map"></div>
+      </div>
+      <div class="span4">
+        <div id="scorebox">
+        </div>
+        <div id="bombArea">
+        </div>
+        <form id="search">
+          <input type="text" id="keyword" />
+          <button type="submit" class="btn btn-primary btn-large">Submit</button>
+        </form>
+      </div>
     </div>
   </div>
 </body>
