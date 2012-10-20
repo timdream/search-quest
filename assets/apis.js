@@ -72,4 +72,24 @@ API.getSuggestions = function (source, term, callback) {
   }
 };
 
+API.getYSearchText = function (query, callback) {
+  $.getJSON('./api/yProxy.php?q=' + encodeURIComponent(query), function (data) {
+    if (!data || !data.html) {
+      callback();
+      return;
+    }
+
+    var html = data.html;
+
+    // strip script, from jQuery
+    var rscript = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
+    html = html.replace(rscript, '');
+
+    // Use load() instead of html() to remove <script>
+    var $div = $('<div />').html(html);
+    callback($div.find('#results ol > li > div > div').text());
+
+  });
+};
+
 })(jQuery);

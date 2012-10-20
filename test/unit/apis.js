@@ -67,3 +67,27 @@ test('Bing should return search Chinese suggestions', function () {
     start();
   });
 });
+
+module('API.getYSearchText()');
+
+test('Function should return search result text', function () {
+  stop();
+
+  API.getYSearchText('Hello', function (result) {
+    ok(result, 'result returned.');
+
+    ok(true, 'results: ' + result);
+    start();
+  });
+});
+
+test('Function should return Chinese search result text', function () {
+  stop();
+
+  API.getYSearchText('康熙', function (result) {
+    ok(result, 'result returned.');
+
+    ok(true, 'results: ' + result);
+    start();
+  });
+});
