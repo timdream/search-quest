@@ -10,11 +10,6 @@ var SearchQuest = {
   _MENUITEMCOUNT: $('#main-menu li').length,
 
   registerEvents: function sq_registerEvents() {
-    $('#start').click(function onClick(){
-      $('#start').slideUp();
-      $('#main-ui').slideDown();
-    });
-
     var self = this;
 
     $('#player-number').change(function onNumberChange(evt) {
@@ -24,9 +19,26 @@ var SearchQuest = {
     $('#quest-cate').change(function onCateChange(evt) {
       $('#quest-cate-label').text($(this).val());
     });
+
+    $('#search').submit(function onSubmit(evt) {
+      evt.preventDefault();
+      var key = $('#keyword').val();
+      $('#keyword').val('');
+      Map.match(key);
+      return false;
+    });
+
+    $('#main-menu li').mouseenter(function onMouseenter() {
+      $(this).siblings('.active').removeClass('active');
+      $(this).addClass('active');
+      self._focus = parseInt($(this).data('index'), 10);
+    });
     
     $('body').live('keydown', function onKeydown(evt){
       switch (evt.keyCode) {
+        case 13:  //enter
+          self.startGame();
+          break;
         case 37:  //<-
           switch (self._focus) {
             case 0:
@@ -122,7 +134,10 @@ var SearchQuest = {
   },
 
   startGame: function sq_startGame() {
-  
+    $('#start').slideUp();
+    $('#game').slideDown();
+    Map.init({});
+    $('#keyword').val('').focus();
   }
 };
 

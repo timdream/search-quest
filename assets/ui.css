@@ -1,0 +1,33 @@
+div.placeholder {
+  border: solid 1px black;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+div.gem {
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+}
+
+div.gem::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 1px;
+  height: 100%;
+}
+
+div.craft {
+  white-space: normal;
+  vertical-align: middle;
+  width: 100%;
+  text-align: center;
+  display: inline-block;
+}
+
+div.placeholder.active {
+  background: #0186d1;
+}
