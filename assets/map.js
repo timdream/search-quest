@@ -132,6 +132,7 @@ var Map = {
   match: function map_match(keyword, player) {
     var self = this;
     API.getYSearchText(keyword, function onSearchReturn(data) {
+      var log = data;
       console.log(data);
       var mapping = [];
       for (var i = 0; i < self.options.width * self.options.height; i++) {
@@ -144,6 +145,10 @@ var Map = {
           // fail
         }
       }
+      for (var i = 0; i < mapping.length; i++) {
+        data = data.replace(self._keywords[mapping[i]], '<span style="color:red;">'+self._keywords[mapping[i]]+'</span>');
+      }
+      $('#search-log').append('<div>'+data+'</div>');
       var bomb = self.createBomb(keyword);
       if (mapping.length) {
         self.fire(mapping, player, bomb);

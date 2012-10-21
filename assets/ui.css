@@ -50,7 +50,7 @@ div#game{
 }
 
 #search input {
-  width: 200px;
+  width: 250px;
   height: 48px;
   font-size: 48px;
   line-height: 48px;
@@ -130,6 +130,20 @@ div.placeholder.active.firefox {
 div.placeholder.active.firefox div.craft {
   color: black;
   text-shadow: 0 -1px 0px red;
+}
+
+div.row, div.span4 {
+  overflow: hidden;
+}
+
+div#search-log {
+  max-width: 100%;
+  opacity: 0.5;
+  position: absolute;
+  z-index: -1;
+  bottom: 0;
+  color: black;
+  font-size: 10px;
 }
 
 .label {
@@ -871,6 +885,7 @@ body.slide3 div#slide3.flipcard {
 
 /* line 174, ../sass/screen.scss */
 .flipcard, div#start.flipcard, div#game.flipcard {
+  overflow: hidden;
   position: absolute;
   left: 0px;
   top: 0px;
