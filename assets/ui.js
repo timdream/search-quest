@@ -36,11 +36,6 @@ var SearchQuest = {
     
     $('body').live('keydown', function onKeydown(evt){
       switch (evt.keyCode) {
-        case 13: case 37: case 38: case 39: case 40:
-	  evt.preventDefault();
-	  break;
-      }
-      switch (evt.keyCode) {
         case 13:  //enter
           self.startGame();
           break;

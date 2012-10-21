@@ -880,9 +880,16 @@ body.gameplaying div#game.flipcard {
 }
 
 /* line 183, ../sass/screen.scss */
-body.gameopening #start.flipcard, body.gameopening div#start.flipcard,
+body.gameopening #start.flipcard, 
+body.gameopening div#start.flipcard,
 body.gameplaying #game.flipcard,
-body.gameplaying div#game.flipcard {
+body.gameplaying div#game.flipcard,
+body.slide1 #slide1.flipcard,
+body.slide1 div#slide1.flipcard,
+body.slide2 #slide2.flipcard,
+body.slide2 div#slide2.flipcard,
+body.slide3 #slide3.flipcard,
+body.slide3 div#slide3.flipcard {
   position: relative;
   -webkit-animation-duration: 1s;
   -moz-animation-duration: 1s;
