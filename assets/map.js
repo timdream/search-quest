@@ -10,10 +10,18 @@ var Map = {
 
   _debugMode: true,
 
-  getKeywords: function map_getKeywords(){
-    var keywords = [
-      '李組長', '爪爪', '臣亮言', '好笑嗎', '炸你全家', '大大', '八卦', '新警察', '余祥銓', '成龍', '臣又', '洗澡', '好人', '英雄聯盟', '不要問', '卡卡獸', '批踢踢', '騜', '吱吱', '安麗', '大聲', '回不去了', '宅男', '能吃嗎', '天龍國', '台科'
-    ];
+  getKeywords: function map_getKeywords(type) {
+    var keywords = [];
+    switch (type) {
+      case 'News':
+        break;
+      case 'Movie':
+        keywords = ['鐵達尼號', '單車', '蝙蝠俠', '鋼鐵人', '福爾摩斯', '變形金剛', '陳妍希', '東京', '柯博文', '豆導', '傻瓜', '翁山蘇姬', '柴契爾', '好萊塢', '佛地魔', '逆光飛翔', '木偶人', '翻滾', '陳漢典', '打十個', '痞子英雄', '皮克斯', '復仇者', '吸血鬼', '史瑞克']
+        break;
+      case 'BBS':
+        keywords = ['李組長', '爪爪', '臣亮言', '好笑嗎', '炸你全家', '大大', '八卦', '新警察', '余祥銓', '成龍', '臣又', '洗澡', '好人', '英雄聯盟', '不要問', '卡卡獸', '批踢踢', '騜', '吱吱', '安麗', '大聲', '回不去了', '宅男', '能吃嗎', '天龍國', '台科'];
+        break;
+    }
 
     return keywords;
   },
@@ -34,7 +42,7 @@ var Map = {
     window.scoreBox = new ScoreBox($("#scorebox"));
 
     this.options = this._defaultOptions;
-    this._keywords = this.getKeywords();
+    this._keywords = this.shuffle(this.getKeywords($('#quest-cate').val()));
     this.generate();
     this.render();
     this._inited = true;
@@ -42,6 +50,11 @@ var Map = {
 
   generate: function map_generate() {
 
+  },
+
+  shuffle: function map_shuffle(o) { //v1.0
+    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
   },
 
   render: function map_render() {
