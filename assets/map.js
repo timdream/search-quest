@@ -12,7 +12,12 @@ var Map = {
 
   getKeywords: function map_getKeywords(type) {
     var keywords = [];
+    if (localStorage["_debugMode"]) {
+      type = 'Debug';
+    }
     switch (type) {
+      case 'Debug':
+        keywords = ['安麗', '李宗瑞', '蘋果', '大聯盟', '中華電信', '九把刀', '陳妍希', '英雄聯盟', 'TPA', '不要問', '回不去', '李組長', '22k', '華碩', '變形金剛', '九二共識', '塊陶阿', '經濟動能推升', '賈柏斯', '余詳銓', '台科', '竹科', '保險套', '吳宗憲', '你好大'];
       case 'News':
         keywords = ['華碩',
           '中華電信',
