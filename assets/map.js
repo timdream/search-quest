@@ -129,6 +129,7 @@ var Map = {
     var self = this;
     API.getYSearchText(keyword, function onSearchReturn(data) {
       console.log(data);
+      $('#search-log').append('<div>'+data+'</div>');
       var mapping = [];
       for (var i = 0; i < self.options.width * self.options.height; i++) {
         var index = keyword.indexOf(self._keywords[i]);
