@@ -34,7 +34,7 @@ div#map {
   margin: 5px;
   background: #ddd;
 }
-div#start, div#game{
+div#start, div#game, div#slide1, div#slide2, div#slide3 {
   padding: 30px;
   background: white;
   border-radius: 30px;
@@ -206,7 +206,13 @@ div#bombArea {
 /* line 17, ../sass/screen.scss */
 __animate, .score-digit.delay-update-1, .score-digit.delay-update-2, .score-digit.delay-update-3, .score-digit.delay-update-4, .score-digit.delay-update-5, .score-msg, body.gameopening #start.flipcard, body.gameopening div#start.flipcard,
 body.gameplaying #game.flipcard,
-body.gameplaying div#game.flipcard {
+body.gameplaying div#game.flipcard,
+body.slide1 #slide1.flipcard,
+body.slide1 div#slide1.flipcard,
+body.slide2 #slide2.flipcard,
+body.slide2 div#slide2.flipcard,
+body.slide3 #slide3.flipcard,
+body.slide3 div#slide3.flipcard {
   -webkit-animation-timing-function: ease-in-out;
   -moz-animation-timing-function: ease-in-out;
   -ms-animation-timing-function: ease-in-out;
