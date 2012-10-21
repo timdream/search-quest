@@ -22,6 +22,50 @@
   	  scoreBox.displayFinal();
           }
         });
+	(function(){
+	    if(!window._debugMode)return;
+	    var keywords = [
+		"去世 蘋果",
+	//	"我猜",
+		"王建民",
+		"二代上路",
+		"種花 手機",
+	//      "富少 淫魔",
+		"那些年",
+		"經濟部長",
+		"美國大選",
+		"早鳥",
+		"宜蘭奶凍",
+	//	"上路 企業",
+		"王雪紅內建",
+	//	"形男大主廚",
+		"是台灣的",
+		"陪你去看",
+	//	"彩券號碼",
+		"扁維拉",
+		"善島寺",
+	//	"都是為你",
+		"宅 新貴",
+	//	"2014足球",
+		"以卵擊石",
+		"安全性行為",
+		""
+	    ].join('\n');    
+	    var processInput = function(i){
+		if(i>=keywords.length) return;
+		if(keywords[i]=="\n"){
+		    $("#search").submit();
+		} else {
+		    $("#keyword").val($("#keyword").val()+keywords[i]);
+		}
+		i++;
+		setTimeout(function(){
+		    processInput(i);
+		}, keywords[i]=="\n"?1000:100);
+	    };
+	    processInput(0);
+	})();
+
       }
       var self = this;
       this.targetElement.append([
@@ -90,6 +134,7 @@
     displayFinal: function(){
       this.targetElement.addClass("final-score");
       $("#search").fadeOut();
+      $("#keyword").blur();
     },
     fitLine: function(num){
       switch(num){
