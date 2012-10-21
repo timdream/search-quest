@@ -166,6 +166,7 @@ var SearchQuest = {
       break;
       case 3:
       // do nothing
+      this.displayTagDialog();
       break;
     }
   }
