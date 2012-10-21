@@ -45,6 +45,11 @@ var SearchQuest = {
       $(this).addClass('active');
       self._focus = parseInt($(this).data('index'), 10);
     });
+
+    $('#main-menu li').click(function(){
+      self._focus = parseInt($(this).data('index'), 10);
+      self.doAction();
+    });
     
     $('body').live('keydown', function onKeydown(evt){
       switch (evt.keyCode) {
@@ -143,6 +148,26 @@ var SearchQuest = {
   startGame: function sq_startGame() {
     $("body").attr("class", "gameplaying");
     Map.init({});
+  },
+
+  doAction: function sq_doAction() {
+    switch (this._focus) {
+      case 0:
+      this.nextQuestCate();
+      break;
+      case 1:
+      // do nothing;
+      break;
+      case 2:
+      this.startGame();
+      break;
+      case 2:
+      // do nothing
+      break;
+      case 3:
+      // do nothing
+      break;
+    }
   }
 };
 
