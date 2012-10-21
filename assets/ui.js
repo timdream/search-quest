@@ -76,18 +76,20 @@ var SearchQuest = {
           self._focus --;
           break;
         case 39:  //->
-          switch (self._focus) {
-            case 0:
-              self.nextQuestCate();
+          switch ($('body').attr('class')) {
+            case 'slide1':
+              $('#toslide2').trigger('click');
               break;
-            case 1:
-              // do nothing;
+            case 'slide2':
+              $('#toslide3').trigger('click');
               break;
-            case 2:
-              self.startGame();
+            case 'slide3':
+              $('#exit3').trigger('click');
               break;
-            case 3:
-              self.displayTagDialog();
+            case 'gameopening':
+              self.doAction();
+              break;
+            case 'gameplaying':
               break;
           }
           break;
