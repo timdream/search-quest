@@ -1,5 +1,5 @@
 'use strict';
-
+var _debugMode = localStorage["_debugMode"];
 var SearchQuest = {
   init: function sq_init() {
     this.registerEvents();
@@ -36,24 +36,26 @@ var SearchQuest = {
     
     $('body').live('keydown', function onKeydown(evt){
       switch (evt.keyCode) {
+        case 13: case 37: case 38: case 39: case 40:
+	  evt.preventDefault();
+	  break;
+      }
+      switch (evt.keyCode) {
         case 13:  //enter
           self.startGame();
           break;
         case 37:  //<-
           switch (self._focus) {
             case 0:
-              self.prevPlayerNumber();
-              break;
-            case 1:
               self.prevQuestCate();
               break;
-            case 2:
+            case 1:
               // do nothing;
               break;
-            case 3:
+            case 2:
               // do nothing
               break;
-            case 4:
+            case 3:
               // do nothing
               break;
           }
@@ -64,18 +66,15 @@ var SearchQuest = {
         case 39:  //->
           switch (self._focus) {
             case 0:
-              self.nextPlayerNumber();
-              break;
-            case 1:
               self.nextQuestCate();
               break;
-            case 2:
+            case 1:
               // do nothing;
               break;
-            case 3:
+            case 2:
               self.startGame();
               break;
-            case 4:
+            case 3:
               self.displayTagDialog();
               break;
           }
@@ -134,10 +133,10 @@ var SearchQuest = {
   },
 
   startGame: function sq_startGame() {
-    $('#start').slideUp();
-    $('#game').slideDown();
+    $("body").attr("class", "gameplaying");
     Map.init({});
   }
 };
 
 SearchQuest.init();
+

@@ -1,10 +1,49 @@
+body {
+  background-color: #EEEEEE;
+  background: url("../assets/bg.gif") repeat scroll 0 0 transparent;
+  background-position: 0 0pt, 30px 30px;
+  background-size: 60px 60px;
+  overflow-y: scroll;
+}
+#main-menu li a {
+  font: 32px 'Sigmar One', cursive;
+}
+#main-menu li a span {
+  display: inline-block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  padding: 12px;
+}
+#main-menu li.active a {
+  text-shadow: 0 -1px 0 black;
+}
+body.gameopening h1 {
+  font: 60px 'Sigmar One', cursive;
+  text-shadow: 0 0 10px #66F;
+}
+h1 .logo128{
+  display:inline-block;
+  width:128px;
+  height:128px;
+  background: url("../assets/logo.png") repeat scroll 0 0 transparent;
+  vertical-align: middle;
+}
 div#map {
   border: solid 5px grey;
   padding: 5px;
   margin: 5px;
   background: #ddd;
 }
-
+div#start, div#game{
+  padding: 30px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 0 20px gray;
+  margin: 60px auto;
+}
+div#game{
+  position:relative;
+}
 #search,#keyword,span.label {
   font-size: 18px;
   line-height: 18px;
@@ -163,4 +202,696 @@ div.placeholder.active.firefox div.craft {
 
 div#bombArea {
   height: 24px;
+}
+/* line 17, ../sass/screen.scss */
+__animate, .score-digit.delay-update-1, .score-digit.delay-update-2, .score-digit.delay-update-3, .score-digit.delay-update-4, .score-digit.delay-update-5, .score-msg, body.gameopening #start.flipcard, body.gameopening div#start.flipcard,
+body.gameplaying #game.flipcard,
+body.gameplaying div#game.flipcard {
+  -webkit-animation-timing-function: ease-in-out;
+  -moz-animation-timing-function: ease-in-out;
+  -ms-animation-timing-function: ease-in-out;
+  -o-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  -ms-animation-fill-mode: forwards;
+  -o-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+@-moz-keyframes flipin_animation {
+  /* line 22, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  /* line 25, ../sass/screen.scss */
+  10% {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+
+  /* line 28, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
+
+@-webkit-keyframes flipin_animation {
+  /* line 22, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  /* line 25, ../sass/screen.scss */
+  10% {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+
+  /* line 28, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
+
+@-o-keyframes flipin_animation {
+  /* line 22, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  /* line 25, ../sass/screen.scss */
+  10% {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+
+  /* line 28, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
+
+@-ms-keyframes flipin_animation {
+  /* line 22, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+
+  /* line 25, ../sass/screen.scss */
+  10% {
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    -ms-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+  }
+
+  /* line 28, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+}
+
+@-moz-keyframes combo_animation {
+  /* line 33, ../sass/screen.scss */
+  0% {
+    top: 0px;
+    opacity: 1;
+    -webkit-transform: rotateX(-100deg);
+    -moz-transform: rotateX(-100deg);
+    -ms-transform: rotateX(-100deg);
+    -o-transform: rotateX(-100deg);
+    transform: rotateX(-100deg);
+  }
+
+  /* line 38, ../sass/screen.scss */
+  20% {
+    top: -40px;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 0.5;
+  }
+
+  /* line 43, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    top: -60px;
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes combo_animation {
+  /* line 33, ../sass/screen.scss */
+  0% {
+    top: 0px;
+    opacity: 1;
+    -webkit-transform: rotateX(-100deg);
+    -moz-transform: rotateX(-100deg);
+    -ms-transform: rotateX(-100deg);
+    -o-transform: rotateX(-100deg);
+    transform: rotateX(-100deg);
+  }
+
+  /* line 38, ../sass/screen.scss */
+  20% {
+    top: -40px;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 0.5;
+  }
+
+  /* line 43, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    top: -60px;
+    opacity: 0;
+  }
+}
+
+@-o-keyframes combo_animation {
+  /* line 33, ../sass/screen.scss */
+  0% {
+    top: 0px;
+    opacity: 1;
+    -webkit-transform: rotateX(-100deg);
+    -moz-transform: rotateX(-100deg);
+    -ms-transform: rotateX(-100deg);
+    -o-transform: rotateX(-100deg);
+    transform: rotateX(-100deg);
+  }
+
+  /* line 38, ../sass/screen.scss */
+  20% {
+    top: -40px;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 0.5;
+  }
+
+  /* line 43, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    top: -60px;
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes combo_animation {
+  /* line 33, ../sass/screen.scss */
+  0% {
+    top: 0px;
+    opacity: 1;
+    -webkit-transform: rotateX(-100deg);
+    -moz-transform: rotateX(-100deg);
+    -ms-transform: rotateX(-100deg);
+    -o-transform: rotateX(-100deg);
+    transform: rotateX(-100deg);
+  }
+
+  /* line 38, ../sass/screen.scss */
+  20% {
+    top: -40px;
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    opacity: 0.5;
+  }
+
+  /* line 43, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotateX(0deg);
+    -moz-transform: rotateX(0deg);
+    -ms-transform: rotateX(0deg);
+    -o-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+    top: -60px;
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes combo_animation2 {
+  /* line 75, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 78, ../sass/screen.scss */
+  25% {
+    -webkit-transform: rotate(-10deg) translateY(-4px);
+    -moz-transform: rotate(-10deg) translateY(-4px);
+    -ms-transform: rotate(-10deg) translateY(-4px);
+    -o-transform: rotate(-10deg) translateY(-4px);
+    transform: rotate(-10deg) translateY(-4px);
+  }
+
+  /* line 81, ../sass/screen.scss */
+  50% {
+    -webkit-transform: rotate(10deg) translateY(-3px);
+    -moz-transform: rotate(10deg) translateY(-3px);
+    -ms-transform: rotate(10deg) translateY(-3px);
+    -o-transform: rotate(10deg) translateY(-3px);
+    transform: rotate(10deg) translateY(-3px);
+  }
+
+  /* line 84, ../sass/screen.scss */
+  75% {
+    -webkit-transform: rotate(-10deg) translateY(-2px);
+    -moz-transform: rotate(-10deg) translateY(-2px);
+    -ms-transform: rotate(-10deg) translateY(-2px);
+    -o-transform: rotate(-10deg) translateY(-2px);
+    transform: rotate(-10deg) translateY(-2px);
+  }
+
+  /* line 87, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(0deg) translateY(-1px);
+    -moz-transform: rotate(0deg) translateY(-1px);
+    -ms-transform: rotate(0deg) translateY(-1px);
+    -o-transform: rotate(0deg) translateY(-1px);
+    transform: rotate(0deg) translateY(-1px);
+  }
+}
+
+@-webkit-keyframes combo_animation2 {
+  /* line 75, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 78, ../sass/screen.scss */
+  25% {
+    -webkit-transform: rotate(-10deg) translateY(-4px);
+    -moz-transform: rotate(-10deg) translateY(-4px);
+    -ms-transform: rotate(-10deg) translateY(-4px);
+    -o-transform: rotate(-10deg) translateY(-4px);
+    transform: rotate(-10deg) translateY(-4px);
+  }
+
+  /* line 81, ../sass/screen.scss */
+  50% {
+    -webkit-transform: rotate(10deg) translateY(-3px);
+    -moz-transform: rotate(10deg) translateY(-3px);
+    -ms-transform: rotate(10deg) translateY(-3px);
+    -o-transform: rotate(10deg) translateY(-3px);
+    transform: rotate(10deg) translateY(-3px);
+  }
+
+  /* line 84, ../sass/screen.scss */
+  75% {
+    -webkit-transform: rotate(-10deg) translateY(-2px);
+    -moz-transform: rotate(-10deg) translateY(-2px);
+    -ms-transform: rotate(-10deg) translateY(-2px);
+    -o-transform: rotate(-10deg) translateY(-2px);
+    transform: rotate(-10deg) translateY(-2px);
+  }
+
+  /* line 87, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(0deg) translateY(-1px);
+    -moz-transform: rotate(0deg) translateY(-1px);
+    -ms-transform: rotate(0deg) translateY(-1px);
+    -o-transform: rotate(0deg) translateY(-1px);
+    transform: rotate(0deg) translateY(-1px);
+  }
+}
+
+@-o-keyframes combo_animation2 {
+  /* line 75, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 78, ../sass/screen.scss */
+  25% {
+    -webkit-transform: rotate(-10deg) translateY(-4px);
+    -moz-transform: rotate(-10deg) translateY(-4px);
+    -ms-transform: rotate(-10deg) translateY(-4px);
+    -o-transform: rotate(-10deg) translateY(-4px);
+    transform: rotate(-10deg) translateY(-4px);
+  }
+
+  /* line 81, ../sass/screen.scss */
+  50% {
+    -webkit-transform: rotate(10deg) translateY(-3px);
+    -moz-transform: rotate(10deg) translateY(-3px);
+    -ms-transform: rotate(10deg) translateY(-3px);
+    -o-transform: rotate(10deg) translateY(-3px);
+    transform: rotate(10deg) translateY(-3px);
+  }
+
+  /* line 84, ../sass/screen.scss */
+  75% {
+    -webkit-transform: rotate(-10deg) translateY(-2px);
+    -moz-transform: rotate(-10deg) translateY(-2px);
+    -ms-transform: rotate(-10deg) translateY(-2px);
+    -o-transform: rotate(-10deg) translateY(-2px);
+    transform: rotate(-10deg) translateY(-2px);
+  }
+
+  /* line 87, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(0deg) translateY(-1px);
+    -moz-transform: rotate(0deg) translateY(-1px);
+    -ms-transform: rotate(0deg) translateY(-1px);
+    -o-transform: rotate(0deg) translateY(-1px);
+    transform: rotate(0deg) translateY(-1px);
+  }
+}
+
+@-ms-keyframes combo_animation2 {
+  /* line 75, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 78, ../sass/screen.scss */
+  25% {
+    -webkit-transform: rotate(-10deg) translateY(-4px);
+    -moz-transform: rotate(-10deg) translateY(-4px);
+    -ms-transform: rotate(-10deg) translateY(-4px);
+    -o-transform: rotate(-10deg) translateY(-4px);
+    transform: rotate(-10deg) translateY(-4px);
+  }
+
+  /* line 81, ../sass/screen.scss */
+  50% {
+    -webkit-transform: rotate(10deg) translateY(-3px);
+    -moz-transform: rotate(10deg) translateY(-3px);
+    -ms-transform: rotate(10deg) translateY(-3px);
+    -o-transform: rotate(10deg) translateY(-3px);
+    transform: rotate(10deg) translateY(-3px);
+  }
+
+  /* line 84, ../sass/screen.scss */
+  75% {
+    -webkit-transform: rotate(-10deg) translateY(-2px);
+    -moz-transform: rotate(-10deg) translateY(-2px);
+    -ms-transform: rotate(-10deg) translateY(-2px);
+    -o-transform: rotate(-10deg) translateY(-2px);
+    transform: rotate(-10deg) translateY(-2px);
+  }
+
+  /* line 87, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(0deg) translateY(-1px);
+    -moz-transform: rotate(0deg) translateY(-1px);
+    -ms-transform: rotate(0deg) translateY(-1px);
+    -o-transform: rotate(0deg) translateY(-1px);
+    transform: rotate(0deg) translateY(-1px);
+  }
+}
+
+/* line 103, ../sass/screen.scss */
+#scorebox {
+  position: absolute;
+  top: 350px;
+  left: 50%;
+  margin-left: 150px;
+  width: 300px;
+}
+/* line 106, ../sass/screen.scss */
+#scorebox #play-again {
+  display: none;
+  font-size: 36px;
+  line-height: 60px;
+  font-family: Courier New;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+}
+/* line 114, ../sass/screen.scss */
+#scorebox #play-again:hover {
+  top: 2px;
+  color: brown;
+  text-shadow: 0px 0px 3px orange;
+  cursor: pointer;
+}
+
+/* line 122, ../sass/screen.scss */
+#scorebox.final-score #play-again {
+  display: block;
+}
+
+/* line 125, ../sass/screen.scss */
+#scorebox.final-score {
+  display: block;
+  -moz-transition: -moz-transform 1s ease-in-out 0s;
+  -webkit-transition: -webkit-transform 1s ease-in-out 0s;
+  -ms-transition: -ms-transform 1s ease-in-out 0s;
+  -o-transition: -o-transform 1s ease-in-out 0s;
+  transition: transform 1s ease-in-out 0s;
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+/* line 130, ../sass/screen.scss */
+.score-label {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  font: 24px 'Sigmar One', cursive;
+  color: gray;
+  text-shadow: 0 0 3px gray;
+  position: relative;
+  top: -5px;
+}
+
+/* line 138, ../sass/screen.scss */
+.score-digit {
+  font-size: 64px;
+  color: black;
+  font-weight: bold;
+  font: 56px 'Sigmar One', cursive;
+  text-shadow: 0px 0px 5px black;
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+}
+/* line 148, ../sass/screen.scss */
+.score-digit.delay-update-1 {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: combo_animation2;
+  -moz-animation-name: combo_animation2;
+  -ms-animation-name: combo_animation2;
+  -o-animation-name: combo_animation2;
+  animation-name: combo_animation2;
+  -webkit-animation-delay: 0.03s;
+  -moz-animation-delay: 0.03s;
+  -ms-animation-delay: 0.03s;
+  -o-animation-delay: 0.03s;
+  animation-delay: 0.03s;
+}
+/* line 148, ../sass/screen.scss */
+.score-digit.delay-update-2 {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: combo_animation2;
+  -moz-animation-name: combo_animation2;
+  -ms-animation-name: combo_animation2;
+  -o-animation-name: combo_animation2;
+  animation-name: combo_animation2;
+  -webkit-animation-delay: 0.06s;
+  -moz-animation-delay: 0.06s;
+  -ms-animation-delay: 0.06s;
+  -o-animation-delay: 0.06s;
+  animation-delay: 0.06s;
+}
+/* line 148, ../sass/screen.scss */
+.score-digit.delay-update-3 {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: combo_animation2;
+  -moz-animation-name: combo_animation2;
+  -ms-animation-name: combo_animation2;
+  -o-animation-name: combo_animation2;
+  animation-name: combo_animation2;
+  -webkit-animation-delay: 0.09s;
+  -moz-animation-delay: 0.09s;
+  -ms-animation-delay: 0.09s;
+  -o-animation-delay: 0.09s;
+  animation-delay: 0.09s;
+}
+/* line 148, ../sass/screen.scss */
+.score-digit.delay-update-4 {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: combo_animation2;
+  -moz-animation-name: combo_animation2;
+  -ms-animation-name: combo_animation2;
+  -o-animation-name: combo_animation2;
+  animation-name: combo_animation2;
+  -webkit-animation-delay: 0.12s;
+  -moz-animation-delay: 0.12s;
+  -ms-animation-delay: 0.12s;
+  -o-animation-delay: 0.12s;
+  animation-delay: 0.12s;
+}
+/* line 148, ../sass/screen.scss */
+.score-digit.delay-update-5 {
+  -webkit-animation-duration: 0.5s;
+  -moz-animation-duration: 0.5s;
+  -ms-animation-duration: 0.5s;
+  -o-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-name: combo_animation2;
+  -moz-animation-name: combo_animation2;
+  -ms-animation-name: combo_animation2;
+  -o-animation-name: combo_animation2;
+  animation-name: combo_animation2;
+  -webkit-animation-delay: 0.15s;
+  -moz-animation-delay: 0.15s;
+  -ms-animation-delay: 0.15s;
+  -o-animation-delay: 0.15s;
+  animation-delay: 0.15s;
+}
+
+/* line 156, ../sass/screen.scss */
+.score-msg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 300px;
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  text-shadow: 0 0 5px red;
+  -webkit-animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-name: combo_animation;
+  -moz-animation-name: combo_animation;
+  -ms-animation-name: combo_animation;
+  -o-animation-name: combo_animation;
+  animation-name: combo_animation;
+}
+
+/* line 170, ../sass/screen.scss */
+#scorebox.final-score ~ #search {
+  -webkit-transition: opacity 1s ease-in-out;
+  -moz-transition: opacity 1s ease-in-out;
+  -ms-transition: opacity 1s ease-in-out;
+  -o-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+  opacity: 0px;
+}
+
+/* line 174, ../sass/screen.scss */
+.flipcard, div#start.flipcard, div#game.flipcard {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  -webkit-transform-origin: 0px -100px;
+  -moz-transform-origin: 0px -100px;
+  -ms-transform-origin: 0px -100px;
+  -o-transform-origin: 0px -100px;
+  transform-origin: 0px -100px;
+}
+
+/* line 183, ../sass/screen.scss */
+body.gameopening #start.flipcard, body.gameopening div#start.flipcard,
+body.gameplaying #game.flipcard,
+body.gameplaying div#game.flipcard {
+  position: relative;
+  -webkit-animation-duration: 1s;
+  -moz-animation-duration: 1s;
+  -ms-animation-duration: 1s;
+  -o-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-name: flipin_animation;
+  -moz-animation-name: flipin_animation;
+  -ms-animation-name: flipin_animation;
+  -o-animation-name: flipin_animation;
+  animation-name: flipin_animation;
 }

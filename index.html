@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
   <meta charset=UTF-8>
-  <title>Search Quest</title>
+  <title>Search Bingo</title>
   <link rel="stylesheet" type="text/css" href="./assets/style.css">
   <link rel="stylesheet" type="text/css" href="./assets/ui.css">
   <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
@@ -22,51 +22,46 @@
   <script defer type="text/javascript" src="./assets/jquery.countdown.min.js"></script>
   <script defer type="text/javascript" src="./assets/map.js"></script>
   <script defer type="text/javascript" src="./assets/scorebox.js"></script>
+  <script defer type="text/javascript" src="./assets/jquery.countdown.min.js"></script>
   <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js" defer></script>
 </head>
-<body>
-  <div id="start" class="container">
+<body class="gameopening">
+  <div id="start" class="container flipcard">
     <div class="hero-unit">
-      <h1>Search Quest</h1>
+      <h1><i class="logo128"></i>Search Bingo</h1>
     </div>
       <ul id="main-menu" class="nav nav-list">
         <li class="active" data-index=0>
-          <a href="#"># of Player
-            <span id="player-number-label" class="label pull-right">1P</span>
+          <a href="#">Quest catogery
+            <span id="quest-cate-label" class="label pull-right">BBS</span>
           </a>
-          <select id="player-number" style="display:none;">
-            <option value="1P">1P</option>
-            <option value="2P">2P</option>
+          <select id="quest-cate" style="display: none;">
+            <option value="BBS">BBS</option>
+            <option value="News">News</option>
+            <option value="Movie">Movie</option>
           </select>
         </li>
         <li data-index=1>
-          <a href="#">Quest catogery
-            <span id="quest-cate-label" class="label pull-right">鄉民</span>
-          </a>
-          <select id="quest-cate" style="display: none;">
-            <option value="鄉民">鄉民</option>
-            <option value="流行">流行</option>
-          </select>
-        </li>
-        <li data-index=2>
           <a href="#">Default Search Engine
             <span class="label pull-right">Yahoo</span>
           </a>
         </li>
-        <li data-index=3>
+        <li data-index=2>
           <a href="#">Start Game</a>
         </li>
-        <li data-index=4>
-          <a href="#">About tag</a>
+        <li data-index=3>
+          <a href="#">About &lt;tag&gt;, About This Project</a>
         </li>
       </ul>
   </div>
-  <div id="game" hidden class="container">
+  <div id="game" class="container flipcard">
     <div class="row">
       <div class="span8">
         <div id="map"></div>
       </div>
       <div class="span4">
+        <div id="countdown">
+	</div>
         <div id="scorebox">
         </div>
         <div id="bombArea">

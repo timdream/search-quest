@@ -7,12 +7,11 @@
 <!--  <link rel="stylesheet" type="text/css" href="../assets/jquery.countdown.css">-->
 </head>
 <body>
-  <div id="countdown"></div>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script defer type="text/javascript" src="../assets/jquery.countdown.min.js"></script>
 <script>
 jQuery(function ($) {
-  var $countdown = $('#countdown');
+  window.$countdown = $('#countdown');
   $countdown.countdown({
     until: new Date((new Date()).getTime() + 120 * 1000),
     compact: true,

@@ -1,5 +1,5 @@
 (function(){
-  window.ScoreBox = function(targetElement){
+  var ScoreBox = function(targetElement){
     this.targetElement = targetElement;
     this.combo = 0;
     this.initUI();
@@ -7,6 +7,23 @@
   ScoreBox.prototype = {
     constructor: ScoreBox,
     initUI: function(){
+      if(window.$countdown){
+        $countdown.countdown("destroy");
+	delete window.$countdown;
+      }
+      if(!window.$countdown){
+        window.$countdown = $('#countdown');
+        $countdown.countdown({
+          until: new Date((new Date()).getTime() + (window._debugMode?10:120) * 1000),
+          compact: true,
+          format: 'MS', description: '',
+          expiryText: 'Times Up!!',
+          onExpiry: function () {
+  	  scoreBox.displayFinal();
+          }
+        });
+      }
+      var self = this;
       this.targetElement.append([
         '<span class="score-label">Score:</span>',
         '<span id="score-digit-container">',
@@ -20,9 +37,16 @@
       ].join(''));
       this.score = 0;
       this.combo = 0;
+      this.targetElement.find(".score-digit").bind('webkitAnimationEnd mozAnimationEnd animationend', function () {
+        $(this).attr("class", "score-digit");
+      });;
+      this.targetElement.find("#play-again").bind("click", function(){
+        self.resetUI();
+        $("#search").fadeIn();
+      });
     },
-    refreshUI: function(){
-      this.targetElement.attr("class","");
+    resetUI: function(){
+      this.targetElement.attr("class","").html("");
       this.initUI();
     },
     updateScore: function(newScore){
@@ -57,7 +81,7 @@
       this.score = newScore;
     },
     success: function(){
-      this.updateScore(this.score+10);
+      this.updateScore(this.score+10 + 5*this.combo);
       this.combo++;
       if(this.combo > 2){
         this.comboMessage("score-msg-combo", this.combo+" Combos!!");
@@ -68,6 +92,7 @@
     },
     displayFinal: function(){
       this.targetElement.addClass("final-score");
+      $("#search").fadeOut();
     },
     fitLine: function(num){
       switch(num){
@@ -90,9 +115,11 @@
       var li = $([
         '<div class="score-msg ',type,'">',msg,'</div>'
       ].join('')).appendTo(this.targetElement);
-      li.bind('animationEnd webAnimationEnd mozAnimationEnd', function(){
-        li.remove();
+      li.bind('webkitAnimationEnd mozAnimationEnd animationend', function () {
+        $(this).remove();
       });
     }
   }
+  window.ScoreBox = ScoreBox;
+  //window.scoreBox = new ScoreBox($("#scorebox"));
 })();
