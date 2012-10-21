@@ -81,7 +81,11 @@ var SearchQuest = {
               $('#toslide2').trigger('click');
               break;
             case 'slide2':
-              $('#toslide3').trigger('click');
+		if(window._debugMode){
+			$('#exit2').trigger('click');
+		} else {
+		      $('#toslide3').trigger('click');
+		}
               break;
             case 'slide3':
               $('#exit3').trigger('click');

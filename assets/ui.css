@@ -924,3 +924,15 @@ body.slide3 div#slide3.flipcard {
   -o-animation-name: flipin_animation;
   animation-name: flipin_animation;
 }
+
+h3 {
+    padding: 20px; font-size:48px!important;
+}
+.url-title span {
+   font-weight: bold;
+   font-size:36px;
+}
+.url-title {
+    text-align:right;font-size: 32px;
+    color:gray;
+}
