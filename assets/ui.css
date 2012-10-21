@@ -137,10 +137,11 @@ div.row, div.span4 {
 }
 
 div#search-log {
+  opacity: 0.5;
   position: absolute;
   z-index: -1;
   bottom: 0;
-  color: silver;
+  color: black;
   font-size: 10px;
 }
 
