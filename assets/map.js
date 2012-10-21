@@ -12,7 +12,7 @@ var Map = {
 
   getKeywords: function map_getKeywords(type) {
     var keywords = [];
-    if (localStorage["_debugMode"]) {
+    if (window._debugMode) {
       type = 'Debug';
     }
     switch (type) {
@@ -73,7 +73,11 @@ var Map = {
     window.scoreBox = new ScoreBox($("#scorebox"));
 
     this.options = this._defaultOptions;
-    this._keywords = this.shuffle(this.getKeywords($('#quest-cate').val()));
+    if(!window._debugMode){
+      this._keywords = this.shuffle(this.getKeywords($('#quest-cate').val()));
+    } else {
+      this._keywords = this.getKeywords($('#quest-cate').val());
+    }
     this.generate();
     this.render();
     this._inited = true;
