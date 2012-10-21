@@ -41,13 +41,10 @@
         $(this).attr("class", "score-digit");
       });;
       this.targetElement.find("#play-again").bind("click", function(){
-        self.resetUI();
-        $("#search").fadeIn();
+        location.href = '';
       });
     },
     resetUI: function(){
-      this.targetElement.attr("class","").html("");
-      this.initUI();
     },
     updateScore: function(newScore){
       var j = 5;
