@@ -14,7 +14,7 @@
       if(!window.$countdown){
         window.$countdown = $('#countdown');
         $countdown.countdown({
-          until: new Date((new Date()).getTime() + (window._debugMode?10:120) * 1000),
+          until: new Date((new Date()).getTime() + (window._debugMode?120:120) * 1000),
           compact: true,
           format: 'MS', description: '',
           expiryText: 'Times Up!!',
@@ -41,7 +41,7 @@
         $(this).attr("class", "score-digit");
       });;
       this.targetElement.find("#play-again").bind("click", function(){
-        location.href = '';
+        location.reload();
       });
     },
     resetUI: function(){
