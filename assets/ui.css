@@ -137,6 +137,7 @@ div.row, div.span4 {
 }
 
 div#search-log {
+  max-width: 100%;
   opacity: 0.5;
   position: absolute;
   z-index: -1;
