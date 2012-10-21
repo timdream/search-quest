@@ -116,18 +116,19 @@ div.placeholder.active {
 }
 
 div.placeholder.active div.craft {
-  color: white;
-  text-shadow: 0 -1px 0px black;
+  color: black;
+  text-shadow: 0 -1px 0px white;
 }
 
 div.placeholder.active.firefox {
   background-image: -webkit-radial-gradient(right bottom, yellow ,orange 100%);
   background-image: -moz-radial-gradient(right bottom, yellow ,orange 100%);
   box-shadow: 0px 0px 15px orange inset;
+  border: solid 2px red;
 }
 
 div.placeholder.active.firefox div.craft {
-  color: white;
+  color: black;
   text-shadow: 0 -1px 0px red;
 }
 
