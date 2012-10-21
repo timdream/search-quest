@@ -41,7 +41,7 @@
         $(this).attr("class", "score-digit");
       });;
       this.targetElement.find("#play-again").bind("click", function(){
-        window.reload();
+        location.reload();
       });
     },
     resetUI: function(){
