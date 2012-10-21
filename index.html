@@ -30,29 +30,29 @@
     <div class="hero-unit">
       <h1><i class="logo128"></i>Search Bingo</h1>
     </div>
-      <ul id="main-menu" class="nav nav-list">
-        <li class="active" data-index=0>
-          <a href="#">Quest catogery
-            <span id="quest-cate-label" class="label pull-right">BBS</span>
-          </a>
-          <select id="quest-cate" style="display: none;">
-            <option value="BBS">BBS</option>
-            <option value="News">News</option>
-            <option value="Movie">Movie</option>
-          </select>
-        </li>
-        <li data-index=1>
-          <a href="#">Default Search Engine
-            <span class="label pull-right">Yahoo</span>
-          </a>
-        </li>
-        <li data-index=2>
-          <a href="#">Start Game</a>
-        </li>
-        <li data-index=3>
-          <a href="#">About &lt;tag&gt;, About This Project</a>
-        </li>
-      </ul>
+    <ul id="main-menu" class="nav nav-list">
+      <li class="active" data-index=0>
+        <a href="#">Quest catogery
+          <span id="quest-cate-label" class="label pull-right">BBS</span>
+        </a>
+        <select id="quest-cate" style="display: none;">
+          <option value="BBS">BBS</option>
+          <option value="News">News</option>
+          <option value="Movie">Movie</option>
+        </select>
+      </li>
+      <li data-index=1>
+        <a href="#">Default Search Engine
+          <span class="label pull-right">Yahoo</span>
+        </a>
+      </li>
+      <li data-index=2>
+        <a href="#">Start Game</a>
+      </li>
+      <li data-index=3>
+        <a href="#">About &lt;tag&gt;, About This Project</a>
+      </li>
+    </ul>
   </div>
   <div id="game" class="container flipcard">
     <div class="row">
@@ -61,23 +61,40 @@
       </div>
       <div class="span4">
         <div id="countdown">
-	</div>
+	      </div>
         <div id="scorebox">
         </div>
         <div id="bombArea">
         </div>
         <form id="search">
           <input type="text" id="keyword" />
-          <button type="submit" class="btn btn-primary btn-large">Submit</button>
+          <button type="submit" class="btn btn-primary btn-large"><i class="icon-search"></i> Submit</button>
         </form>
       </div>
     </div>
   </div>
   <div id="slide1" class="container flipcard">
+    <div class="row">
+    </div>
+    <footer>
+      <button class="btn" id="toslide2">Next</button>
+      <button class="btn exit" id="exit">Exit</button>
+    </footer>
   </div>
   <div id="slide2" class="container flipcard">
+    <div class="row">
+    </div>
+    <footer>
+      <button class="btn" id="toslide3">Next</button>
+      <button class="btn exit" id="exit">Exit</button>
+    </footer>
   </div>
   <div id="slide3" class="container flipcard">
+    <div class="row">
+    </div>
+    <footer>
+      <button class="btn exit" id="exit">Exit</button>
+    </footer>
   </div>
 </body>
 </html>

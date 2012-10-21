@@ -12,6 +12,18 @@ var SearchQuest = {
   registerEvents: function sq_registerEvents() {
     var self = this;
 
+    $('#toslide2').click(function (){
+      $('body').attr('class', 'slide2');
+    });
+    
+    $('#toslide3').click(function (){
+      $('body').attr('class', 'slide3');
+    });
+    
+    $('.exit').click(function (){
+      $('body').attr('class', 'gameopening');
+    });
+
     $('#player-number').change(function onNumberChange(evt) {
       $('#player-number-label').text($(this).val());
     });
@@ -125,6 +137,7 @@ var SearchQuest = {
   },
 
   displayTagDialog: function sq_displayTagDialog() {
+    $('body').attr('class', 'slide1');
   },
 
   startGame: function sq_startGame() {

@@ -45,8 +45,6 @@
       });
     },
     resetUI: function(){
-      this.targetElement.attr("class","").html("");
-      this.initUI();
     },
     updateScore: function(newScore){
       var j = 5;
